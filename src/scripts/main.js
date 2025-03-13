@@ -17,7 +17,11 @@ document.addEventListener('DOMContentLoaded', function () {
       if (cells.length > colIndex) {
         const clonedCell = cells[colIndex].cloneNode(true);
 
-        row.insertBefore(clonedCell, cells[insertBeforeIndex]);
+        if (insertBeforeIndex >= cells.length) {
+          row.appendChild(clonedCell);
+        } else {
+          row.insertBefore(clonedCell, cells[insertBeforeIndex]);
+        }
       }
     });
   }
